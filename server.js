@@ -28,16 +28,16 @@ connectDB();
 // Routes
 app.use("/api/users", require("./routes/users.routes"));
 app.use("/api/analytics/data", require("./routes/analyticsData.routes"));
-app.use(
-  "/api/analytics/dashboard",
-  require("./routes/analyticsDashboard.routes")
-);
+app.use("/api/analytics/dashboard", require("./routes/analyticsDashboard.routes"));
 app.use("/api/books", require("./routes/books.routes"));
+app.use("/api/book", require("./routes/book.routes"));
+app.use("/api/book-notes", require("./routes/bookNote.routes"));
 app.use("/api/notifications", require("./routes/notifications.routes"));
-app.use("/api/reading-progress", require("./routes/readingProgress.routes")); // ✅ Updated
-app.use("/api/goals", require("./routes/goals.routes"));
-app.use("/api/recommendations", require("./routes/recommendations.routes"));
+app.use("/api/reading-progress", require("./routes/readingProgress.routes"));
+app.use("/api/reading-goals", require("./routes/reaqdinggoals.routes"));
+app.use("/api/recommendation", require("./routes/recommendation.routes"));
 app.use("/api/summaries", require("./routes/summaries.routes"));
+app.use("/api/theme", require("./routes/theme.routes"));
 
 // Default Route
 app.get("/", (req, res) => {

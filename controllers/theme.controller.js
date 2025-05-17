@@ -1,4 +1,4 @@
-const UserSettings = require("../models/userSettings.model");
+const UserSettings = require("../models/usersetting.model");
 
 // 🎨 Update Theme
 const updateTheme = async (req, res) => {

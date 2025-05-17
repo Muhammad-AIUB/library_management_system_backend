@@ -6,7 +6,15 @@ const {
   getBookById,
   updateBook,
   deleteBook,
+  searchBooks,
+  importFromGoogleBooks
 } = require("../controllers/books.controller");
+
+// 🔍 Advanced Search Books
+router.get("/search", searchBooks);
+
+// 🔄 Import Book from Google Books
+router.post("/import", importFromGoogleBooks);
 
 // 📦 Create Book
 router.post("/", createBook);

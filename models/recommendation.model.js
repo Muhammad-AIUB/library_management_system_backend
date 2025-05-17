@@ -1,5 +1,26 @@
 const mongoose = require("mongoose");
 
+const ratingSchema = new mongoose.Schema(
+  {
+    book: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Book",
+      required: true,
+    },
+    rating: {
+      type: Number,
+      required: true,
+      min: 1,
+      max: 5,
+    },
+    ratedAt: {
+      type: Date,
+      default: Date.now,
+    }
+  }, 
+  { _id: true }
+);
+
 const recommendationSchema = new mongoose.Schema(
   {
     user: {
@@ -15,7 +36,22 @@ const recommendationSchema = new mongoose.Schema(
     ],
     genres: {
       type: [String],
-      required: true,
+      default: [],
+    },
+    authors: {
+      type: [String],
+      default: [],
+    },
+    ratings: [ratingSchema],
+    accuracy: {
+      type: Number,
+      default: 0,
+      min: 0,
+      max: 100,
+    },
+    lastUpdated: {
+      type: Date,
+      default: Date.now,
     },
     createdAt: {
       type: Date,
@@ -26,5 +62,8 @@ const recommendationSchema = new mongoose.Schema(
     versionKey: false,
   }
 );
+
+// Index to ensure efficient lookup by user
+recommendationSchema.index({ user: 1 });
 
 module.exports = mongoose.model("Recommendation", recommendationSchema);

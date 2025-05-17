@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const analyticsSchema = new mongoose.Schema(
+const analyticsDataSchema = new mongoose.Schema(
   {
     user: {
       type: mongoose.Schema.Types.ObjectId,
@@ -13,11 +13,11 @@ const analyticsSchema = new mongoose.Schema(
     },
     readingTime: {
       type: Number,
-      default: 0, // মিনিটে হিসাব করা হবে
+      default: 0, // in minutes
     },
     averageReadingSpeed: {
       type: Number,
-      default: 0, // মিনিট প্রতি বই
+      default: 0, // pages per minute
     },
     favoriteGenres: {
       type: [String],
@@ -33,4 +33,4 @@ const analyticsSchema = new mongoose.Schema(
   }
 );
 
-module.exports = mongoose.model("Analytics", analyticsSchema);
+module.exports = mongoose.model("AnalyticsData", analyticsDataSchema);

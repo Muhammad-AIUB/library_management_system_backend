@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const analyticsSchema = new mongoose.Schema({
+const userAnalyticsSchema = new mongoose.Schema({
   user: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
@@ -24,5 +24,5 @@ const analyticsSchema = new mongoose.Schema({
   },
 });
 
-const Analytics = mongoose.model("Analytics", analyticsSchema);
-module.exports = Analytics;
+const UserAnalytics = mongoose.model("UserAnalytics", userAnalyticsSchema);
+module.exports = UserAnalytics;

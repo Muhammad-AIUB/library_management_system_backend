@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const analyticsSchema = new mongoose.Schema(
+const dashboardAnalyticsSchema = new mongoose.Schema(
   {
     user: {
       type: mongoose.Schema.Types.ObjectId,
@@ -36,4 +36,4 @@ const analyticsSchema = new mongoose.Schema(
   { versionKey: false }
 );
 
-module.exports = mongoose.model("Analytics", analyticsSchema);
+module.exports = mongoose.model("DashboardAnalytics", dashboardAnalyticsSchema);

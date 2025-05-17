@@ -1,18 +1,22 @@
 const express = require("express");
 const router = express.Router();
 const {
-  getReadingProgress,
+  getDashboardOverview,
+  getReadingProgressAnalysis,
   getGenreAnalysis,
-  getReadingTimeAnalysis,
+  getReadingTimeAnalysis
 } = require("../controllers/analyticsDashboard.controller");
 
-// 📊 Reading Progress Analysis
-router.get("/progress/:userId", getReadingProgress);
+// 📊 Dashboard Overview
+router.get("/overview/:userId", getDashboardOverview);
 
-// 📚 Genre Analysis
+// 📈 Reading Progress Analysis with Visualization Data
+router.get("/progress/:userId", getReadingProgressAnalysis);
+
+// 📚 Genre Analysis with Chart Data
 router.get("/genre/:userId", getGenreAnalysis);
 
-// 📅 Reading Time Analysis
-router.get("/time/:userId/:period", getReadingTimeAnalysis);
+// 📅 Reading Time Analysis with Heatmap
+router.get("/time/:userId", getReadingTimeAnalysis);
 
 module.exports = router;

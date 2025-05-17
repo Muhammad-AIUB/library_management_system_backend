@@ -1,11 +1,11 @@
-const Analytics = require("../models/analytics.model");
+const AnalyticsData = require("../models/analyticsData.model");
 
 // 📝 Create or Update Analytics Data
 const updateAnalytics = async (req, res) => {
   try {
     const { user, booksRead, readingTime, favoriteGenres } = req.body;
 
-    let analytics = await Analytics.findOne({ user });
+    let analytics = await AnalyticsData.findOne({ user });
 
     if (analytics) {
       // Update Existing Data
@@ -21,7 +21,7 @@ const updateAnalytics = async (req, res) => {
       await analytics.save();
     } else {
       // Create New Data
-      analytics = await Analytics.create({
+      analytics = await AnalyticsData.create({
         user,
         booksRead,
         readingTime,
@@ -43,7 +43,7 @@ const getAnalyticsData = async (req, res) => {
   try {
     const { userId } = req.params;
 
-    const analytics = await Analytics.findOne({ user: userId }).populate(
+    const analytics = await AnalyticsData.findOne({ user: userId }).populate(
       "user",
       "name email"
     );

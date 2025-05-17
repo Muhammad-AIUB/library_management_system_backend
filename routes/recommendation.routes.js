@@ -1,14 +1,18 @@
 const express = require("express");
 const router = express.Router();
 const {
-  createRecommendation,
+  generateRecommendations,
   getRecommendations,
+  rateRecommendation
 } = require("../controllers/recommendation.controller");
 
-// 📝 Create or Update Recommendation
-router.post("/", createRecommendation);
+// 📚 Generate Personalized Recommendations
+router.get("/generate/:userId", generateRecommendations);
 
 // 📜 Get Recommendations for a User
 router.get("/:userId", getRecommendations);
+
+// 👍 Rate Recommendation Quality
+router.post("/rate", rateRecommendation);
 
 module.exports = router;

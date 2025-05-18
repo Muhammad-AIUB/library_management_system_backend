@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const bcrypt = require("bcryptjs");
 
 const userSchema = new mongoose.Schema(
   {
@@ -13,6 +14,7 @@ const userSchema = new mongoose.Schema(
       unique: true,
       trim: true,
       lowercase: true,
+      match: [/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/, 'Please enter a valid email address'],
     },
     password: {
       type: String,
@@ -23,6 +25,18 @@ const userSchema = new mongoose.Schema(
       type: String,
       enum: ["User", "Admin"],
       default: "User",
+    },
+    profilePicture: {
+      type: String,
+      default: "",
+    },
+    bio: {
+      type: String,
+      default: "",
+    },
+    preferences: {
+      type: Object,
+      default: {},
     },
   },
   { timestamps: true }

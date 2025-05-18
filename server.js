@@ -27,6 +27,7 @@ if (process.env.NODE_ENV !== 'test') {
 }
 
 // Routes
+app.use("/api/auth", require("./routes/auth.routes"));
 app.use("/api/users", require("./routes/users.routes"));
 app.use("/api/analytics/data", require("./routes/analyticsData.routes"));
 app.use("/api/analytics/dashboard", require("./routes/analyticsDashboard.routes"));
